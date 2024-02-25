@@ -3,23 +3,25 @@
 This repository contains a basic procedure to build OWL patches offline, using Docker.
 All inspiration comes from https://github.com/RebelTechnology/OwlProgram.
 
-**NOTE: this has only been tested with a Befaco Lich module, and only with Faust patches. I will happily accept PR's that expand and improve on this!**
+**NOTE: this has only been tested with a Befaco Lich module, and only with Faust patches.**
+I will happily accept PR's that expand and improve on this!
 
 
 ## Installation
 
 * Install and run [Docker](https://www.docker.com). Docker Desktop on a Mac M1 works fine.
-* Download [FirmwareSender](https://github.com/pingdynasty/FirmwareSender/releases/tag/v0.1). I'm using `v0.1`, since there is a binary download for Mac.
-* Build image with `./build.sh`. This will take a while.
+* Download [FirmwareSender](https://github.com/pingdynasty/FirmwareSender/releases/tag/v0.1).
+  I'm using `v0.1`, because there is a binary download for Mac.
+* Build the Docker image with `./build.sh`. This will take a while.
 
 ## Compiling patches
 
-* Run image with `./run.sh`
+* Run the Docker image with `./run.sh`.
 * When you get a prompt like `root@09c1f9c5ada4:/#` in the Docker container, execute the following:
   * `cd OwlProgram`
   * `make clean libs`
     Ignore the build failure because `/bin/sh: 1: emcc: not found`. This is because emscripten is not installed. Could not get it to work anyway...
-  * `make FAUST=sine-c clean patch`
+  * `make FAUST=sine clean patch`
 
 For more targets and options, see https://github.com/RebelTechnology/OwlProgram.
 
